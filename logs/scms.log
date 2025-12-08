@@ -1,0 +1,83 @@
+[2025-11-30 07:30:38] [INFO] [System] Logger working!
+[2025-11-30 09:41:05] [INFO] [System] Application started
+[2025-11-30 09:41:05] [INFO] [AuthManager] No users file found; starting fresh.
+[2025-11-30 09:41:05] [INFO] [CourseManager] No course file found, starting empty.
+[2025-11-30 09:41:16] [WARN] [AuthManager] Login failed (no username): krish
+[2025-11-30 09:41:45] [INFO] [AuthManager] Registered user 'kriush' (id 1001)
+[2025-11-30 09:41:45] [INFO] [AuthManager] Saved users to data/users.csv
+[2025-11-30 09:42:34] [WARN] [AuthManager] Login failed (no username): 2
+[2025-11-30 09:42:58] [INFO] [AuthManager] Registered user 'q' (id 1002)
+[2025-11-30 09:42:58] [INFO] [AuthManager] Saved users to data/users.csv
+[2025-11-30 09:43:07] [INFO] [AuthManager] Login success for kriush
+[2025-11-30 09:43:07] [INFO] [Main] User logged in: kriush
+[2025-11-30 09:43:50] [INFO] [Main] User logged out: kriush
+[2025-11-30 09:45:12] [INFO] [System] Application shutting down
+[2025-11-30 09:45:59] [INFO] [System] Application started
+[2025-11-30 09:45:59] [INFO] [AuthManager] Loaded users from data/users.csv
+[2025-11-30 09:45:59] [INFO] [CourseManager] Loaded courses.
+[2025-11-30 09:46:26] [WARN] [AuthManager] Login failed (bad password): kriush1uthManager] Login success for kriush
+[2025-11-30 09:46:38] [INFO] [Main] User logged in: kriush
+[2025-11-30 09:46:59] [INFO] [Main] User logged out: kriush
+[2025-11-30 09:47:00] [INFO] [System] Application shutting down
+[2025-11-30 09:49:01] [INFO] [System] Application started
+[2025-11-30 09:49:01] [INFO] [AuthManager] Loaded users from data/users.csv
+[2025-11-30 09:49:01] [INFO] [CourseManager] Loaded courses.
+[2025-11-30 09:49:13] [INFO] [AuthManager] Registered user 'a' (id 1003)
+[2025-11-30 09:49:13] [INFO] [AuthManager] Saved users to data/users.csv
+[2025-11-30 09:49:37] [INFO] [AuthManager] Login success for a
+[2025-11-30 09:49:37] [INFO] [Main] User logged in: a
+[2025-11-30 09:49:59] [INFO] [CourseManager] Added course id=5001
+[2025-11-30 09:50:20] [INFO] [Main] User logged out: a
+[2025-11-30 09:50:26] [INFO] [AuthManager] Login success for kriush
+[2025-11-30 09:50:26] [INFO] [Main] User logged in: kriush
+[2025-11-30 09:50:40] [INFO] [CourseManager] Enrolled student 1001 in course 5001
+[2025-11-30 09:50:57] [INFO] [Main] User logged out: kriush
+[2025-11-30 09:51:07] [INFO] [AuthManager] Login success for q
+[2025-11-30 09:51:07] [INFO] [Main] User logged in: q
+[2025-11-30 09:51:21] [INFO] [CourseManager] Enrolled student 1002 in course 5001
+[2025-11-30 09:51:40] [INFO] [Main] User logged out: q
+[2025-12-07 09:17:30] [INFO] [System] Application started
+[2025-12-07 09:17:30] [INFO] [AuthManager] Loaded users from data/users.csv
+[2025-12-07 09:17:30] [INFO] [CourseManager] Loaded courses.
+[2025-12-07 09:17:35] [INFO] [AuthManager] Login success for a
+[2025-12-07 09:17:35] [INFO] [Main] User logged in: a
+[2025-12-07 09:17:46] [INFO] [Main] User logged out: a
+[2025-12-07 09:27:04] [INFO] [System] Application started
+[2025-12-07 09:27:04] [INFO] [AuthManager] Loaded users from data/users.csv
+[2025-12-07 09:27:04] [INFO] [CourseManager] Loaded courses.
+[2025-12-07 09:27:14] [INFO] [AuthManager] Registered user 'qw' (id 1004)
+[2025-12-07 09:27:14] [INFO] [AuthManager] Saved users to data/users.csv
+[2025-12-07 09:27:18] [INFO] [AuthManager] Login success for qw
+[2025-12-07 09:27:18] [INFO] [Main] User logged in: qw
+[2025-12-07 09:27:28] [INFO] [AuthManager] Password changed for userId=1004
+[2025-12-07 09:27:28] [INFO] [AuthManager] Saved users to data/users.csv
+[2025-12-07 09:27:28] [INFO] [Main] Password changed for user qw
+[2025-12-07 09:32:54] [INFO] [Main] User logged out: qw
+[2025-12-07 09:32:56] [INFO] [System] Application shutting down
+[2025-12-07 09:35:57] [INFO] [System] Application started
+[2025-12-07 09:35:57] [INFO] [AuthManager] Loaded users from data/users.csv
+[2025-12-07 09:35:57] [INFO] [CourseManager] Loaded courses.
+[2025-12-07 09:36:04] [WARN] [AuthManager] Login failed (bad password): a
+[2025-12-07 09:36:08] [INFO] [AuthManager] Login success for a
+[2025-12-07 09:36:08] [INFO] [Main] User logged in: a
+[2025-12-07 09:36:56] [INFO] [CourseManager] Assigned teacher 1004 to course 5001
+[2025-12-07 09:37:04] [INFO] [Main] User logged out: a
+[2025-12-07 09:37:08] [WARN] [AuthManager] Login failed (bad password): qw
+[2025-12-07 09:37:38] [INFO] [AuthManager] Login success for q
+[2025-12-07 09:37:38] [INFO] [Main] User logged in: q
+[2025-12-07 09:38:39] [INFO] [Main] User logged out: q
+[2025-12-07 09:38:46] [INFO] [AuthManager] Registered user 'w' (id 1005)
+[2025-12-07 09:38:46] [INFO] [AuthManager] Saved users to data/users.csv
+[2025-12-07 09:38:55] [INFO] [AuthManager] Registered user 'd' (id 1006)
+[2025-12-07 09:38:55] [INFO] [AuthManager] Saved users to data/users.csv
+[2025-12-07 09:39:01] [INFO] [AuthManager] Registered user 'r' (id 1007)
+[2025-12-07 09:39:01] [INFO] [AuthManager] Saved users to data/users.csv
+[2025-12-07 09:39:07] [INFO] [AuthManager] Login success for r
+[2025-12-07 09:39:07] [INFO] [Main] User logged in: r
+[2025-12-07 09:39:27] [INFO] [Main] User logged out: r
+[2025-12-07 09:39:32] [INFO] [AuthManager] Login success for a
+[2025-12-07 09:39:32] [INFO] [Main] User logged in: a
+[2025-12-07 09:39:43] [INFO] [CourseManager] Assigned teacher 1007 to course 5001
+[2025-12-07 09:39:45] [INFO] [Main] User logged out: a
+[2025-12-07 09:39:49] [INFO] [AuthManager] Login success for r
+[2025-12-07 09:39:49] [INFO] [Main] User logged in: r
