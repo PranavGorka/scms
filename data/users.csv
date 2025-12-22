@@ -1,8 +1,9 @@
 id,username,passwordHash,salt,role,name,email
 1007,r,6531969fc58ea546,tBEd9qa6Falp,TEACHER,r,r
 1006,d,3b8ae988333a6514,P5vDQlhOZRWi,ADMIN,d,d
-1005,w,7cb3c7c978b5a781,gdkttGwYopjS,STUDENT,w,w
+1005,w,9f4167a7ca89569e,MypfTx6Wx7Co,STUDENT,w,w
 1003,a,7fd9b4d35cbd58d4,ovt2sF8Wqj6E,ADMIN,a,a
 1002,q,5ce12b041368a664,bDQjnOXoSIFs,STUDENT,q,q
 1001,kriush,1b3acf811a382616,2rYKVXgu0pjQ,STUDENT,krish gorka,abc@gmail.com
 1004,qw,211b6c54c1313398,4wGZQ9W6jFTj,TEACHER,qw,qw
+1008,t,61dfd61825e2edef,QhncWKDp9Q6E,ADMIN,t,t

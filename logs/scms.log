@@ -81,3 +81,81 @@
 [2025-12-07 09:39:45] [INFO] [Main] User logged out: a
 [2025-12-07 09:39:49] [INFO] [AuthManager] Login success for r
 [2025-12-07 09:39:49] [INFO] [Main] User logged in: r
+[2025-12-20 17:33:22] [INFO] [System] Application started
+[2025-12-20 17:33:22] [INFO] [AuthManager] Loaded users from data/users.csv
+[2025-12-20 17:33:22] [INFO] [CourseManager] Loaded courses.
+[2025-12-20 17:33:35] [INFO] [AuthManager] Registered user 't' (id 1008)
+[2025-12-20 17:33:35] [INFO] [AuthManager] Saved users to data/users.csv
+[2025-12-20 17:33:40] [INFO] [AuthManager] Login success for t
+[2025-12-20 17:33:40] [INFO] [Main] User logged in: t
+[2025-12-20 17:33:53] [INFO] [CourseManager] Added course id=5002
+[2025-12-20 17:34:25] [INFO] [Main] User logged out: t
+[2025-12-20 17:34:32] [INFO] [AuthManager] Login success for w
+[2025-12-20 17:34:32] [INFO] [Main] User logged in: w
+[2025-12-20 17:34:51] [INFO] [AuthManager] Password changed for userId=1005
+[2025-12-20 17:34:51] [INFO] [AuthManager] Saved users to data/users.csv
+[2025-12-20 17:34:51] [INFO] [Main] Password changed for user w
+[2025-12-20 17:34:55] [INFO] [Main] User logged out: w
+[2025-12-20 17:34:58] [INFO] [AuthManager] Login success for w
+[2025-12-20 17:34:58] [INFO] [Main] User logged in: w
+[2025-12-20 18:08:55] [INFO] [System] Application started
+[2025-12-20 18:08:56] [INFO] [AuthManager] Loaded users from data/users.csv
+[2025-12-20 18:08:56] [INFO] [CourseManager] Loaded courses.
+[2025-12-20 18:09:15] [INFO] [AuthManager] Login success for d
+[2025-12-20 18:09:15] [INFO] [Main] User logged in: d
+[2025-12-20 18:09:36] [INFO] [CourseManager] Deleted course id=5002
+[2025-12-20 18:09:51] [INFO] [LibraryManager] Added book: english
+[2025-12-20 18:10:06] [INFO] [Main] User logged out: d
+[2025-12-20 18:10:11] [WARN] [AuthManager] Login failed (bad password): w
+[2025-12-20 18:10:17] [INFO] [AuthManager] Login success for w
+[2025-12-20 18:10:17] [INFO] [Main] User logged in: w
+[2025-12-20 18:10:42] [INFO] [LibraryManager] Issued book 3001 to student 1005
+[2025-12-20 18:11:05] [INFO] [LibraryManager] Returned book 3001 from student 1005
+[2025-12-20 18:11:09] [INFO] [Main] User logged out: w
+[2025-12-20 18:11:15] [INFO] [AuthManager] Login success for r
+[2025-12-20 18:11:15] [INFO] [Main] User logged in: r
+[2025-12-20 18:11:34] [INFO] [AuthManager] Saved users to data/users.csv
+[2025-12-20 18:11:45] [INFO] [System] Application started
+[2025-12-20 18:11:45] [INFO] [AuthManager] Loaded users from data/users.csv
+[2025-12-20 18:11:45] [INFO] [CourseManager] Loaded courses.
+[2025-12-20 18:11:49] [INFO] [AuthManager] Login success for r
+[2025-12-20 18:11:49] [INFO] [Main] User logged in: r
+[2025-12-20 18:17:31] [INFO] [System] Application started
+[2025-12-20 18:17:31] [INFO] [AuthManager] Loaded users from data/users.csv
+[2025-12-20 18:17:31] [INFO] [CourseManager] Loaded courses.
+[2025-12-20 18:17:47] [INFO] [AuthManager] Login success for r
+[2025-12-20 18:17:47] [INFO] [Main] User logged in: r
+[2025-12-20 18:18:07] [INFO] [ExamManager] Created exam 9001 for course 5001
+[2025-12-20 18:18:29] [INFO] [ExamManager] Marks entered: exam 9001, student 1001
+[2025-12-20 18:18:46] [INFO] [Main] User logged out: r
+[2025-12-20 18:18:56] [INFO] [AuthManager] Login success for w
+[2025-12-20 18:18:56] [INFO] [Main] User logged in: w
+[2025-12-20 18:27:51] [INFO] [System] Application started
+[2025-12-20 18:27:51] [INFO] [AuthManager] Loaded users from data/users.csv
+[2025-12-20 18:27:51] [INFO] [CourseManager] Loaded courses.
+[2025-12-20 18:28:03] [INFO] [AuthManager] Login success for r
+[2025-12-20 18:28:03] [INFO] [Main] User logged in: r
+[2025-12-20 18:28:21] [INFO] [AttendanceManager] Attendance marked for course 5001 on 1212-12-12
+[2025-12-20 18:28:49] [INFO] [AttendanceManager] Attendance marked for course 5001 on 1212-23-2
+[2025-12-20 18:29:22] [INFO] [Main] User logged out: r
+[2025-12-20 18:29:28] [INFO] [AuthManager] Login success for w
+[2025-12-20 18:29:28] [INFO] [Main] User logged in: w
+[2025-12-20 18:30:27] [INFO] [Main] User logged out: w
+[2025-12-20 18:30:31] [INFO] [AuthManager] Login success for q
+[2025-12-20 18:30:31] [INFO] [Main] User logged in: q
+[2025-12-22 12:34:36] [INFO] [System] Application started
+[2025-12-22 12:34:36] [INFO] [AuthManager] Loaded users from data/users.csv
+[2025-12-22 12:34:36] [INFO] [CourseManager] Loaded courses.
+[2025-12-22 12:35:11] [INFO] [AuthManager] Login success for w
+[2025-12-22 12:35:11] [INFO] [Main] User logged in: w
+[2025-12-22 12:36:43] [INFO] [Main] User logged out: w
+[2025-12-22 12:36:55] [INFO] [AuthManager] Login success for r
+[2025-12-22 12:36:55] [INFO] [Main] User logged in: r
+[2025-12-22 12:37:16] [INFO] [Main] User logged out: r
+[2025-12-22 12:37:23] [INFO] [AuthManager] Login success for t
+[2025-12-22 12:37:23] [INFO] [Main] User logged in: t
+[2025-12-22 12:38:08] [INFO] [System] Application started
+[2025-12-22 12:38:08] [INFO] [AuthManager] Loaded users from data/users.csv
+[2025-12-22 12:38:08] [INFO] [CourseManager] Loaded courses.
+[2025-12-22 12:38:15] [INFO] [AuthManager] Login success for w
+[2025-12-22 12:38:15] [INFO] [Main] User logged in: w

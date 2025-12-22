@@ -6,8 +6,11 @@
 #include "../include/AuthManager.h"
 #include "../include/CourseManager.h"
 #include "../include/User.h"
+#include "../include/ExamManager.h"
+#include "../include/ReportGenerator.h"
+#include "../include/LibraryManager.h"
+#include "../include/AttendanceManager.h"
 
-// simple input helpers
 static void clearStdin()
 {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -48,6 +51,10 @@ int main()
 {
     Logger::init("logs/scms.log");
     Logger::log("System", Logger::Level::INFO, "Application started");
+
+    ExamManager examManager;
+    LibraryManager libraryManager;
+    AttendanceManager attendanceManager;
 
     AuthManager auth("data/users.csv");
     CourseManager cm("data/courses.csv");
@@ -129,14 +136,25 @@ int main()
 
             int studentEnrollChoice = -1;
             int studentDropChoice = -1;
+            int studentListBooksChoice = -1;
+            int studentIssueBookChoice = -1;
+            int studentReturnBookChoice = -1;
+            int studentViewMarksChoice = -1;
+            int studentViewAttendanceChoice = -1;
 
             int teacherMyCoursesChoice = -1;
             int teacherStudentsChoice = -1;
+            int teacherExamReportChoice = -1;
+            int teacherCreateExamChoice = -1;
+            int teacherEnterMarksChoice = -1;
+            int teacherMarkAttendanceChoice = -1;
+            int teacherViewAttendanceChoice = -1;
 
             int adminAddChoice = -1;
             int adminUpdateChoice = -1;
             int adminDeleteChoice = -1;
             int adminAssignChoice = -1;
+            int adminAddBookChoice = -1;
 
             std::cout << "\n==== Main Menu (" << user->getUsername() << ") ====\n";
             std::cout << "1) View profile\n";
@@ -147,16 +165,39 @@ int main()
             {
                 studentEnrollChoice = nextChoice++;
                 studentDropChoice = nextChoice++;
-                std::cout << studentEnrollChoice << ") Enroll in course\n";
+                studentViewAttendanceChoice = nextChoice++;
+                studentViewMarksChoice = nextChoice++;
+                studentListBooksChoice = nextChoice++;
+                studentIssueBookChoice = nextChoice++;
+                studentReturnBookChoice = nextChoice++;
+
+                                std::cout << studentEnrollChoice << ") Enroll in course\n";
                 std::cout << studentDropChoice << ") Drop course\n";
+                std::cout << studentViewAttendanceChoice << ") View my attendance\n";
+                std::cout << studentViewMarksChoice << ") View my exam marks\n";
+                std::cout << studentListBooksChoice << ") List library books\n";
+                std::cout << studentIssueBookChoice << ") Issue a book\n";
+                std::cout << studentReturnBookChoice << ") Return a book\n";
             }
 
             if (isTeacher)
             {
                 teacherMyCoursesChoice = nextChoice++;
                 teacherStudentsChoice = nextChoice++;
+                teacherCreateExamChoice = nextChoice++;
+                teacherEnterMarksChoice = nextChoice++;
+                teacherExamReportChoice = nextChoice++;
+
+                teacherMarkAttendanceChoice = nextChoice++;
+                teacherViewAttendanceChoice = nextChoice++;
+
                 std::cout << teacherMyCoursesChoice << ") My courses\n";
                 std::cout << teacherStudentsChoice << ") View students in my course\n";
+                std::cout << teacherCreateExamChoice << ") Create exam\n";
+                std::cout << teacherEnterMarksChoice << ") Enter marks\n";
+                std::cout << teacherExamReportChoice << ") Generate exam report\n";
+                std::cout << teacherMarkAttendanceChoice << ") Mark attendance\n";
+                std::cout << teacherViewAttendanceChoice << ") View attendance for course\n";
             }
 
             if (isAdmin)
@@ -165,10 +206,14 @@ int main()
                 adminUpdateChoice = nextChoice++;
                 adminDeleteChoice = nextChoice++;
                 adminAssignChoice = nextChoice++;
+
+                adminAddBookChoice = nextChoice++;
+
                 std::cout << adminAddChoice << ") Add course\n";
                 std::cout << adminUpdateChoice << ") Update course\n";
                 std::cout << adminDeleteChoice << ") Delete course\n";
                 std::cout << adminAssignChoice << ") Assign teacher to course\n";
+                std::cout << adminAddBookChoice << ") Add library book\n";
             }
 
             std::cout << "0) Logout\n";
@@ -230,6 +275,92 @@ int main()
                     std::cout << "Drop failed (not enrolled?)\n";
                 pause();
             }
+            else if (isStudent && choice == studentListBooksChoice)
+            {
+                libraryManager.listBooks();
+                pause();
+            }
+            else if (isStudent && choice == studentIssueBookChoice)
+            {
+                int bookId = readInt("Book ID to issue: ");
+                try
+                {
+                    libraryManager.issueBook(bookId, currentUserId);
+                    std::cout << "Book issued successfully.\n";
+                }
+                catch (const std::exception &e)
+                {
+                    std::cout << "Error: " << e.what() << "\n";
+                }
+                pause();
+            }
+            else if (isStudent && choice == studentReturnBookChoice)
+            {
+                int bookId = readInt("Book ID to return: ");
+                try
+                {
+                    libraryManager.returnBook(bookId, currentUserId);
+                    std::cout << "Book returned successfully.\n";
+                }
+                catch (const std::exception &e)
+                {
+                    std::cout << "Error: " << e.what() << "\n";
+                }
+                pause();
+            }
+            else if (isStudent && choice == studentViewMarksChoice)
+            {
+                int courseId = readInt("Course ID: ");
+
+                try
+                {
+                    auto exams = examManager.getExamsForCourse(courseId);
+
+                    if (exams.empty())
+                    {
+                        std::cout << "No exams found for this course.\n";
+                    }
+                    else
+                    {
+                        std::cout << "\n=== My Marks ===\n";
+                        for (const auto &exam : exams)
+                        {
+                            auto marksMap = exam.getMarks();
+                            if (marksMap.count(currentUserId))
+                            {
+                                std::cout << "Exam Date: " << exam.getDate()
+                                          << " | Marks: " << marksMap.at(currentUserId)
+                                          << "/" << exam.getMaxMarks() << "\n";
+                            }
+                        }
+                    }
+                }
+                catch (const std::exception &e)
+                {
+                    std::cout << "Error: " << e.what() << "\n";
+                }
+                pause();
+            }
+            else if (isStudent && choice == studentViewAttendanceChoice)
+            {
+                int courseId = readInt("Course ID: ");
+
+                auto records = attendanceManager.getAttendanceForCourse(courseId);
+
+                std::cout << "\n=== My Attendance ===\n";
+                for (auto &r : records)
+                {
+                    auto rec = r.getRecords();
+                    if (rec.count(currentUserId))
+                    {
+                        std::cout << r.getDate()
+                                  << " : " << (rec[currentUserId] ? "Present" : "Absent")
+                                  << "\n";
+                    }
+                }
+                pause();
+            }
+
             else if (isTeacher && choice == teacherMyCoursesChoice)
             {
                 auto my = cm.listCoursesByTeacher(currentUserId);
@@ -276,6 +407,141 @@ int main()
                 }
                 pause();
             }
+            else if (isTeacher && choice == teacherExamReportChoice)
+            {
+                int courseId = readInt("Course ID: ");
+
+                auto course = cm.getCourseById(courseId);
+                if (!course || course->getTeacherId() != currentUserId)
+                {
+                    std::cout << "You are not assigned to this course.\n";
+                    pause();
+                    return 0;
+                }
+
+                try
+                {
+                    auto exams = examManager.getExamsForCourse(courseId);
+
+                    if (exams.empty())
+                    {
+                        std::cout << "No exams found for this course.\n";
+                    }
+                    else
+                    {
+                        ReportGenerator<Exam>::generate(
+                            exams,
+                            "Exam Report for Course " + std::to_string(courseId));
+                    }
+                }
+                catch (const std::exception &e)
+                {
+                    std::cout << "Error generating report: " << e.what() << "\n";
+                }
+
+                pause();
+            }
+            else if (isTeacher && choice == teacherCreateExamChoice)
+            {
+                int courseId = readInt("Course ID: ");
+
+                auto course = cm.getCourseById(courseId);
+                if (!course || course->getTeacherId() != currentUserId)
+                {
+                    std::cout << "You are not assigned to this course.\n";
+                    pause();
+                    continue;
+                }
+
+                std::string date = readLine("Exam date (YYYY-MM-DD): ");
+                int maxMarks = readInt("Maximum marks: ");
+
+                try
+                {
+                    int examId = examManager.createExam(courseId, date, maxMarks);
+                    std::cout << "Exam created successfully. Exam ID: " << examId << "\n";
+                }
+                catch (const std::exception &e)
+                {
+                    std::cout << "Error: " << e.what() << "\n";
+                }
+                pause();
+            }
+            else if (isTeacher && choice == teacherEnterMarksChoice)
+            {
+                int examId = readInt("Exam ID: ");
+                int studentId = readInt("Student ID: ");
+                int marks = readInt("Marks obtained: ");
+
+                try
+                {
+                    examManager.enterMarks(examId, studentId, marks);
+                    std::cout << "Marks entered successfully.\n";
+                }
+                catch (const std::exception &e)
+                {
+                    std::cout << "Error: " << e.what() << "\n";
+                }
+                pause();
+            }
+            else if (isTeacher && choice == teacherMarkAttendanceChoice)
+            {
+                int courseId = readInt("Course ID: ");
+
+                auto course = cm.getCourseById(courseId);
+                if (!course || course->getTeacherId() != currentUserId)
+                {
+                    std::cout << "You are not assigned to this course.\n";
+                    pause();
+                    continue;
+                }
+
+                std::string date = readLine("Date (YYYY-MM-DD): ");
+
+                auto students = course->getEnrolledStudents();
+                if (students.empty())
+                {
+                    std::cout << "No students enrolled.\n";
+                    pause();
+                    continue;
+                }
+
+                std::vector<bool> present;
+                for (int sid : students)
+                {
+                    int p = readInt("Student " + std::to_string(sid) + " present? (1/0): ");
+                    present.push_back(p == 1);
+                }
+
+                attendanceManager.markAttendance(courseId, date, students, present);
+                std::cout << "Attendance marked successfully.\n";
+                pause();
+            }
+            else if (isTeacher && choice == teacherViewAttendanceChoice)
+            {
+                int courseId = readInt("Course ID: ");
+
+                auto course = cm.getCourseById(courseId);
+                if (!course || course->getTeacherId() != currentUserId)
+                {
+                    std::cout << "You are not assigned to this course.\n";
+                    pause();
+                    continue;
+                }
+
+                auto records = attendanceManager.getAttendanceForCourse(courseId);
+                for (auto &r : records)
+                {
+                    std::cout << "\nDate: " << r.getDate() << "\n";
+                    for (auto &p : r.getRecords())
+                    {
+                        std::cout << "Student " << p.first
+                                  << " : " << (p.second ? "Present" : "Absent") << "\n";
+                    }
+                }
+                pause();
+            }
+
             else if (isAdmin && choice == adminAddChoice)
             {
                 std::string title = readLine("Course title: ");
@@ -325,6 +591,17 @@ int main()
                     std::cout << "Assignment failed (course id invalid?)\n";
                 pause();
             }
+            else if (isAdmin && choice == adminAddBookChoice)
+            {
+                std::string title = readLine("Book title: ");
+                std::string author = readLine("Author: ");
+                int copies = readInt("Number of copies: ");
+
+                libraryManager.addBook(title, author, copies);
+                std::cout << "Book added successfully.\n";
+                pause();
+            }
+
             else if (choice == 0)
             {
                 Logger::log("Main", Logger::Level::INFO,
